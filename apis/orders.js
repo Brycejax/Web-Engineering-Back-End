@@ -3,7 +3,7 @@ const router = express.Router()
 const mongodb = require ('mongodb');
 
 const DB_NAME = 'lfood';
-const GENRES_COLLECTION_NAME = 'orders';
+const ORDERS_COLLECTION_NAME = 'orders';
 
 const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
 const MongoClient = mongodb.MongoClient;
@@ -18,7 +18,7 @@ router.get('/', function(req, res){
         }
     
             const db = connection.db(DB_NAME); // Connection to the Bookstore DB
-            db.collection(GENRES_COLLECTION_NAME)
+            db.collection(ORDERS_COLLECTION_NAME)
             .find({})
             .toArray(function(find_err, records){
                 if(find_err){
@@ -32,7 +32,7 @@ router.get('/', function(req, res){
 
 //POST requests
 router.post('/', function(req, res){
-    if(!req.body.type || !req.body.stock || !req.body.popularity)
+    if(!req.body.items || !req.body.user || !req.body.payment)
             return res.status(400).send({ message: "title, author, price, ISBN, and stock required."})
     
     
@@ -44,7 +44,7 @@ router.post('/', function(req, res){
     
         client.connect(function(err, connection){
             const db = connection.db(DB_NAME);
-            db.collection(GENRES_COLLECTION_NAME)
+            db.collection(ORDERS_COLLECTION_NAME)
             .insertOne(req.body, function(insert_error, data){
                 if(insert_error)
                     return res.status(500).send({message: "Something went wrong"});
@@ -67,11 +67,11 @@ router.put('/:id', function(req, res){
         const db = connection.db(DB_NAME);
         const data = 
         {
-            title: req.body.title,
-            price: req.body.price,
-            author: req.body.author
+            item: req.body.item,
+            user: req.body.user,
+            payment: req.body.payment
         }
-        db.collection(BOOK_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
+        db.collection(ORDERS_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
         {$set: data},function(err, result) {
             if (err){
                 return res.status(500).send({message: "Something went wrong!"})
@@ -97,7 +97,7 @@ router.delete('/:id', function(req, res){
             }
             const db = connection.db(DB_NAME);
             assert.equal(null, err);
-                db.collection(GENRES_COLLECTION_NAME).deleteOne({"_id": objectId(id)}, function(del_err, result){
+                db.collection(ORDERS_COLLECTION_NAME).deleteOne({"_id": objectId(id)}, function(del_err, result){
                     if (del_err){
                         return res.status(500).send({message: "Something went wrong."})
                     }

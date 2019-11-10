@@ -4,12 +4,11 @@ const assert = require('assert');
 // variable needed for object id to be inserted into put function
 var objectId = require('mongodb').ObjectID;
 
-const books = require('./apis/books')
+const cart = require('./apis/cart')
 const users = require('./apis/users')
-const genres = require('./apis/drinks')
+const info = require('./apis/info')
 const orders = require('./apis/orders')
-const requests = require('./apis/requests')
-const userhistory = require('./apis/userhistory')
+const products = require('./apis/products')
 
 const app = express();
 const PORT = 5050;
@@ -21,7 +20,7 @@ app.use(function(req, res, next){
     next();
 })
 
-const DB_NAME = 'book_store';
+const DB_NAME = 'lfood';
 const BOOK_COLLECTION_NAME = 'Foods';
 const USERS_COLLECTION_NAME = 'Users';
 const ORDERS_COLLECTION_NAME = 'Orders';
@@ -37,10 +36,9 @@ app.use(bodyParser.json()); // allow user to send json data.
 //GET
 app.use('/foods', foods)
 app.use('/users', users)
-app.use('/drinks', drinks)
+app.use('/cart', cart)
 app.use('/orders', orders)
-app.use('/requests', requests)
-app.use('/userhistory', userhistory)
+app.use('/products', products)
 app.listen(PORT);
 console.log("Listening on port " + PORT);
 

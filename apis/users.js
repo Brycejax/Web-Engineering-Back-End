@@ -31,7 +31,7 @@ router.get('/', function(req, res){
 
 //POST requests
 router.post('/', function(req, res){
-    if(!req.body.name || !req.body.address || !req.body.username || !req.body.password)
+    if(!req.body.username || !req.body.password || !req.body.fullname || !req.body.creditcard || !req.body.cart)
             return res.status(400).send({ message: "title, author, price, ISBN, stock, or rating required."})
     
     
@@ -65,9 +65,12 @@ router.put('/:id', function(req, res){
         const db = connection.db(DB_NAME);
         const data = 
         {
-            title: req.body.title,
-            price: req.body.price,
-            author: req.body.author
+            username: req.body.username,
+            password: req.body.password,
+            fullname: req.body.fullname,
+            creditcard: req.body.creditcard,
+            cart: req.body.cart
+
         }
         db.collection(BOOK_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
         {$set: data},function(err, result) {

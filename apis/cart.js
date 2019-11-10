@@ -3,7 +3,7 @@ const router = express.Router()
 const mongodb = require ('mongodb');
 
 const DB_NAME = 'lfood';
-const REQUESTS_COLLECTION_NAME = 'cart';
+const CART_COLLECTION_NAME = 'cart';
 
 const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
 const MongoClient = mongodb.MongoClient;
@@ -17,7 +17,7 @@ router.get('/', function(req, res){
         }
     
             const db = connection.db(DB_NAME); // Connection to the Bookstore DB
-            db.collection(REQUESTS_COLLECTION_NAME)
+            db.collection(CART_COLLECTION_NAME)
             .find({})
             .toArray(function(find_err, records){
                 if(find_err){
@@ -43,7 +43,7 @@ router.post('/', function(req, res){
     
         client.connect(function(err, connection){
             const db = connection.db(DB_NAME);
-            db.collection(REQUESTS_COLLECTION_NAME)
+            db.collection(CART_COLLECTION_NAME)
             .insertOne(req.body, function(insert_error, data){
                 if(insert_error)
                     return res.status(500).send({message: "Something went wrong"});
@@ -66,11 +66,11 @@ router.put('/:id', function(req, res){
         const db = connection.db(DB_NAME);
         const data = 
         {
-            title: req.body.title,
             price: req.body.price,
-            author: req.body.author
+            payment: req.body.payment,
+            name: req.body.name
         }
-        db.collection(BOOK_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
+        db.collection(CART_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
         {$set: data},function(err, result) {
             if (err){
                 return res.status(500).send({message: "Something went wrong!"})
@@ -95,7 +95,7 @@ router.delete('/:id', function(req, res){
             }
             const db = connection.db(DB_NAME);
             assert.equal(null, err);
-                db.collection(REQUESTS_COLLECTION_NAME).deleteOne({"_id": objectId(id)}, function(del_err, result){
+                db.collection(CART_COLLECTION_NAME).deleteOne({"_id": objectId(id)}, function(del_err, result){
                     if (del_err){
                         return res.status(500).send({message: "Something went wrong."})
                     }
