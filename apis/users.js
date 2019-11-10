@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const mongodb = require ('mongodb');
 
-const DB_NAME = 'book_store';
-const USERS_COLLECTION_NAME = 'Users';
+const DB_NAME = 'lfood';
+const USERS_COLLECTION_NAME = 'users';
 
 const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
 const MongoClient = mongodb.MongoClient;
@@ -56,24 +56,32 @@ router.post('/', function(req, res){
 
 router.put('/:id', function(req, res){
     if(!req.params.id || req.params.id.length === 0)
-            return res.status(400).send({message: "User ID is required."})
-        client.connect(function(err, connection){
+                return res.status(400).send({message: "Request ID is required."})
+    client.connect(function(err, connection){
             if (err){
                 return res.status(500).send({message: "Something went wrong!"})
             }
-            const db = connection.db(DB_NAME);
-            db.collection(USERS_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
-            {$set: req.body},function(err, result) {
-                if (err){
-                    return res.status(500).send({message: "Something went wrong!"})
-                }
-    
-                assert.equal(null, err);
-                return res.status(200).send({message: 'Updated successfully'})
-    
-        });
-      });
+            
+        const db = connection.db(DB_NAME);
+        const data = 
+        {
+            title: req.body.title,
+            price: req.body.price,
+            author: req.body.author
+        }
+        db.collection(BOOK_COLLECTION_NAME).updateOne({"_id" : objectId(req.params.id)},                 
+        {$set: data},function(err, result) {
+            if (err){
+                return res.status(500).send({message: "Something went wrong!"})
+            }
+
+            assert.equal(null, err);
+            return res.status(200).send({message: 'Updated successfully'})
+
+    });
+  });
 })
+
 
 //DELETE requests
 router.delete('/:id', function(req, res){
