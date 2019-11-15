@@ -7,7 +7,7 @@ const mongodb = require ('mongodb');
 const DB_NAME = 'lfood';
 const PRODUCTS_COLLECTION_NAME = 'products';
 
-const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
+const DB_URI = 'mongodb://localhost:27017'
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
 
