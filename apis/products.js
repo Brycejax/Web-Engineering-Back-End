@@ -36,7 +36,11 @@ router.get('/', function(req, res){
 //POST request
 router.post('/', function(req, res){
     if(!req.body.name || !req.body.type || !req.body.stock || !req.body.price || !req.body.picture)
+<<<<<<< HEAD
             return res.status(400).send({ message: "requires product fields."})
+=======
+            return res.status(400).send({ message: "name, type, stock, price, or picture required."})
+>>>>>>> b4f98f2c51d1641a6e06d6fc9bc3144b6a3b2db1
     
     
         if(!req.body || req.body.length === 0)
