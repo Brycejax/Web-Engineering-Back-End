@@ -7,7 +7,7 @@ const INFO_COLLECTION_NAME = 'info';
 
 const assert = require('assert');
 var objectId = require('mongodb').ObjectID;
-const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
+const DB_URI = 'mongodb://localhost:27017'
 //'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority'
 //'mongodb+srv://<username>:<password>@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority';
 //'mongodb://localhost:27017'
@@ -38,7 +38,7 @@ router.get('/', function(req, res){
 //POST request
 router.post('/', function(req, res){
     if(!req.body.street || !req.body.state || !req.body.zip || !req.body.appnumber)
-            return res.status(400).send({ message: "title, author, price, ISBN, and stock required."})
+            return res.status(400).send({ message: "this requires the info fields."})
     
     
         if(!req.body || req.body.length === 0)

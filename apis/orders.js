@@ -5,7 +5,7 @@ const mongodb = require ('mongodb');
 const DB_NAME = 'lfood';
 const ORDERS_COLLECTION_NAME = 'orders';
 
-const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
+const DB_URI = 'mongodb://localhost:27017'
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
 
@@ -33,7 +33,7 @@ router.get('/', function(req, res){
 //POST requests
 router.post('/', function(req, res){
     if(!req.body.items || !req.body.user || !req.body.payment)
-            return res.status(400).send({ message: "title, author, price, ISBN, and stock required."})
+            return res.status(400).send({ message: "orders fields are required"})
     
     
         if(!req.body || req.body.length === 0)
