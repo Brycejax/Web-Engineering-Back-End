@@ -4,8 +4,8 @@
   "description": "This is the backend for the bookstore system",
   "main": "app.js",
   "scripts": {
-    "start" : "nodemon app.js",
-    "deploy" : "rsync -r exclude node_modules ./ username@aws-server-address:~/path/",
+    "start": "nodemon app.js",
+    "deploy": "rsync -r exclude node_modules ./ username@aws-server-address:~/path/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alex Nordhoff",
@@ -16,6 +16,6 @@
     "mongodb": "^3.3.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.4"
   }
 }

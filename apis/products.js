@@ -7,7 +7,8 @@ const mongodb = require ('mongodb');
 const DB_NAME = 'lfood';
 const PRODUCTS_COLLECTION_NAME = 'products';
 
-const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
+//const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
+const DB_URI = 'mongodb://localhost:27017' 
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
 
@@ -35,7 +36,7 @@ router.get('/', function(req, res){
 //POST request
 router.post('/', function(req, res){
     if(!req.body.name || !req.body.type || !req.body.stock || !req.body.price || !req.body.picture)
-            return res.status(400).send({ message: "title, author, price, ISBN, stock, or rating required."})
+            return res.status(400).send({ message: "requires product fields."})
     
     
         if(!req.body || req.body.length === 0)
