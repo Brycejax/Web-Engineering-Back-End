@@ -35,7 +35,7 @@ router.get('/', function(req, res){
 //POST request
 router.post('/', function(req, res){
     if(!req.body.name || !req.body.type || !req.body.stock || !req.body.price || !req.body.picture)
-            return res.status(400).send({ message: "title, author, price, ISBN, stock, or rating required."})
+            return res.status(400).send({ message: "name, type, stock, price, or picture required."})
     
     
         if(!req.body || req.body.length === 0)

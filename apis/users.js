@@ -32,7 +32,7 @@ router.get('/', function(req, res){
 //POST requests
 router.post('/', function(req, res){
     if(!req.body.username || !req.body.password || !req.body.fullname || !req.body.creditcard || !req.body.cart)
-            return res.status(400).send({ message: "title, author, price, ISBN, stock, or rating required."})
+            return res.status(400).send({ message: "username, password, fullname, credit card, or cart required."})
     
     
         if(!req.body || req.body.length === 0)
