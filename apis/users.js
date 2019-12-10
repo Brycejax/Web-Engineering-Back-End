@@ -4,7 +4,7 @@ const mongodb = require ('mongodb');
 
 const DB_NAME = 'lfood';
 const USERS_COLLECTION_NAME = 'users';
-
+const assert = require('assert');
 const DB_URI = 'mongodb://localhost:27017'
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
