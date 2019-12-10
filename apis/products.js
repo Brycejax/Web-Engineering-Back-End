@@ -6,7 +6,7 @@ const mongodb = require ('mongodb');
 
 const DB_NAME = 'lfood';
 const PRODUCTS_COLLECTION_NAME = 'products';
-
+var objectId = require('mongodb').ObjectID;
 //const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
 const DB_URI = 'mongodb://localhost:27017' 
 const MongoClient = mongodb.MongoClient;
@@ -40,7 +40,7 @@ router.post('/', function(req, res){
     
     
         if(!req.body || req.body.length === 0)
-            return res.status(400).send({message: "Book data is required"})
+            return res.status(400).send({message: "product data is required"})
     
         console.log(req.body); //print an object
         //data is in req.body
