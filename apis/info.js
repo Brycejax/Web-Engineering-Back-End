@@ -6,7 +6,7 @@ const DB_NAME = 'lfood';
 const INFO_COLLECTION_NAME = 'info';
 const assert = require('assert');
 var objectId = require('mongodb').ObjectID;
-const DB_URI = 'mongodb://localhost:27017'
+const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority'
 //'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority'
 //'mongodb+srv://<username>:<password>@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority';
 //'mongodb://localhost:27017'

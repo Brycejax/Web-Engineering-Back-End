@@ -8,7 +8,7 @@ const DB_NAME = 'lfood';
 const PRODUCTS_COLLECTION_NAME = 'products';
 var objectId = require('mongodb').ObjectID;
 //const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/admin?retryWrites=true&w=majority' 
-const DB_URI = 'mongodb://localhost:27017' 
+const DB_URI = 'mongodb+srv://Alex:Nordhoff@webengineering0-vwh99.mongodb.net/test?retryWrites=true&w=majority' 
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
 
