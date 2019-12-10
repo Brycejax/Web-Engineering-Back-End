@@ -8,7 +8,7 @@ const USERS_COLLECTION_NAME = 'users';
 const DB_URI = 'mongodb://localhost:27017'
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
-
+var objectId = require('mongodb').ObjectID;
 //GET requests
 router.get('/', function(req, res){
     client.connect(function(err, connection){

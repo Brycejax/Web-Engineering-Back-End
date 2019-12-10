@@ -8,6 +8,7 @@ const CART_COLLECTION_NAME = 'cart';
 const DB_URI = 'mongodb://localhost:27017'
 const MongoClient = mongodb.MongoClient;
 const client = new MongoClient(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useNewUrlParser: true});
+var objectId = require('mongodb').ObjectID;
 
 //GET requests
 router.get('/', function(req, res){
@@ -36,7 +37,7 @@ router.post('/', function(req, res){
     
     
         if(!req.body || req.body.length === 0)
-            return res.status(400).send({message: "Book data is required"})
+            return res.status(400).send({message: "cart data is required"})
     
         console.log(req.body); //print an object
         //data is in req.body

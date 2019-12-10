@@ -42,7 +42,7 @@ router.post('/', function(req, res){
     
     
         if(!req.body || req.body.length === 0)
-            return res.status(400).send({message: "Book data is required"})
+            return res.status(400).send({message: "order data is required"})
     
         console.log(req.body); //print an object
         //data is in req.body
