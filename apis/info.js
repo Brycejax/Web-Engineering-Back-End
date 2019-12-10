@@ -4,7 +4,6 @@ const mongodb = require ('mongodb');
 
 const DB_NAME = 'lfood';
 const INFO_COLLECTION_NAME = 'info';
-
 const assert = require('assert');
 var objectId = require('mongodb').ObjectID;
 const DB_URI = 'mongodb://localhost:27017'
